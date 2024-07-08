@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Create = () => {
   const navigate = useNavigate();
   const [createData, setCreateData] = useState({
+    // craeting new data state
     product_id: "",
     product_name: "",
     product_price: "",
@@ -15,7 +16,7 @@ const Create = () => {
     e.preventDefault();
     await axios
       .post(
-        `https://6671157ee083e62ee439f788.mockapi.io/api/v9/todo/`,
+        `https://6671157ee083e62ee439f788.mockapi.io/api/v9/todo/`, // Creating a new product using POST CAll
         createData
       )
       .then((res) => console.log(res.data))
@@ -34,6 +35,7 @@ const Create = () => {
   };
   return (
     <>
+      {/* Displaying in a form */}
       <div className="container">
         <form action="" onSubmit={handleUpdate}>
           <div className="mb-3">

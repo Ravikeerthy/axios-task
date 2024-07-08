@@ -2,13 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Home = () => {
-  const [productsData, setProductsData] = useState([]);
+  const [productsData, setProductsData] = useState([]); //Product State Management
   useEffect(() => {
     fetchData();
-  }, []);
+  }, []); //Get Call UseEffect
   const fetchData = async () => {
     await axios
-      .get("https://6671157ee083e62ee439f788.mockapi.io/api/v9/todo")
+      .get("https://6671157ee083e62ee439f788.mockapi.io/api/v9/todo") //MockAPI get call on AXIOS
       .then((res) => setProductsData(res.data))
       .catch((error) => console.log(error));
   };
@@ -17,15 +17,18 @@ const Home = () => {
     <div>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {productsData.map((item, index) => {
+          //Product Mapping
           return (
             <>
               <div key={index}>
+                {" "}
+                {/*Displaying on UI Product Card */}
                 <div className="col">
                   <div className="card">
                     <img
                       src={item.product_image}
                       className="card-img-top"
-                      alt="..."
+                      alt="img"
                     />
                     <div className="card-body">
                       <h6 className="card-title">{item.product_id}</h6>

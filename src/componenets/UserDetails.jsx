@@ -4,10 +4,10 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserDetails = ({ setId }) => {
-  const [productData, setProductData] = useState([]);
-  const [deleteData, setDeleteData] = useState([]);
+  const [productData, setProductData] = useState([]); // Product State Management
+  const [deleteData, setDeleteData] = useState([]); // Delete State Management
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Used Navigate to redirect to another component
   useEffect(() => {
     fetchData();
   }, [deleteData]);
@@ -19,11 +19,11 @@ const UserDetails = ({ setId }) => {
       .catch((err) => console.log(err));
   };
 
-  const handleEdit = (id) => {
+  const handleEdit = (id) => {  //Triggering Edit Button function with navigate
     setId(id);
     navigate(`/edit/${id}`);
   };
-  const handleRemove = async (id) => {
+  const handleRemove = async (id) => { //Triggering Delete Button function using delete call
     await axios
       .delete(`https://6671157ee083e62ee439f788.mockapi.io/api/v9/todo/${id}`)
       .then((res) => {
@@ -32,7 +32,8 @@ const UserDetails = ({ setId }) => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="container-fluid">
+    // Displaying in a table
+    <div className="container-fluid"> 
       <table class="table table-striped">
         <thead>
           <tr>
@@ -44,7 +45,7 @@ const UserDetails = ({ setId }) => {
           </tr>
         </thead>
         <tbody>
-          {productData.map((item, index) => {
+          {productData.map((item, index) => {  // Product Mapping to display in table
             return (
               <>
                 <tr key={index}>
@@ -77,8 +78,16 @@ const UserDetails = ({ setId }) => {
           })}
         </tbody>
       </table>
-      <div className="d-flex justify-content-center">
-        <button className="btn btn-primary" onClick={()=>{navigate('/create')}}>Create New User</button>
+      {/* Creating a new User */}
+      <div className="d-flex justify-content-center"> 
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            navigate("/create");
+          }}
+        >
+          Create New User
+        </button>
       </div>
     </div>
   );
