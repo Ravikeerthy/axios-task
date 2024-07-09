@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import "./styles/homestyle.css";
 
 const Home = () => {
   const [productsData, setProductsData] = useState([]); //Product State Management
@@ -15,7 +16,9 @@ const Home = () => {
 
   return (
     <div>
-      <div className="row row-cols-1 row-cols-md-3 g-4">
+      <div className="container">
+        <h1 className="text-center mt-5" id="heading">Furry Friends</h1>
+      <div className="row row-cols-1 row-cols-md-3 g-4 mt-5">
         {productsData.map((item, index) => {
           //Product Mapping
           return (
@@ -23,7 +26,7 @@ const Home = () => {
               <div key={index}>
                 {" "}
                 {/*Displaying on UI Product Card */}
-                <div className="col">
+                <div className="col" id="card-design">
                   <div className="card">
                     <img
                       src={item.product_image}
@@ -42,6 +45,7 @@ const Home = () => {
             </>
           );
         })}
+      </div>
       </div>
     </div>
   );

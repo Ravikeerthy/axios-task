@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "./styles/navstyle.css";
 
 const Nav = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg" id="navbar">
         <div className="container-fluid">
           <button
             className="navbar-toggler"

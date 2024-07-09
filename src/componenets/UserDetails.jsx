@@ -19,11 +19,13 @@ const UserDetails = ({ setId }) => {
       .catch((err) => console.log(err));
   };
 
-  const handleEdit = (id) => {  //Triggering Edit Button function with navigate
+  const handleEdit = (id) => {
+    //Triggering Edit Button function with navigate
     setId(id);
     navigate(`/edit/${id}`);
   };
-  const handleRemove = async (id) => { //Triggering Delete Button function using delete call
+  const handleRemove = async (id) => {
+    //Triggering Delete Button function using delete call
     await axios
       .delete(`https://6671157ee083e62ee439f788.mockapi.io/api/v9/todo/${id}`)
       .then((res) => {
@@ -33,7 +35,17 @@ const UserDetails = ({ setId }) => {
   };
   return (
     // Displaying in a table
-    <div className="container-fluid"> 
+    <div className="container">
+      <div className="d-flex justify-content-end mt-3">
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            navigate("/create");
+          }}
+        >
+          Create New User
+        </button>
+      </div>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -45,7 +57,8 @@ const UserDetails = ({ setId }) => {
           </tr>
         </thead>
         <tbody>
-          {productData.map((item, index) => {  // Product Mapping to display in table
+          {productData.map((item, index) => {
+            // Product Mapping to display in table
             return (
               <>
                 <tr key={index}>
@@ -79,16 +92,6 @@ const UserDetails = ({ setId }) => {
         </tbody>
       </table>
       {/* Creating a new User */}
-      <div className="d-flex justify-content-center"> 
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            navigate("/create");
-          }}
-        >
-          Create New User
-        </button>
-      </div>
     </div>
   );
 };
